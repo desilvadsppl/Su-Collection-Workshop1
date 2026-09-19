@@ -1,0 +1,166 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Store order and WhatsApp purchase requests including digital guides, mentorships, and tools.",
+      "type": "object",
+      "properties": {
+        "customer": {
+          "type": "object",
+          "description": "Customer contact and shipping details"
+        },
+        "items": {
+          "type": "array",
+          "description": "List of ordered items"
+        },
+        "subtotal": {
+          "type": "number",
+          "description": "Order subtotal in LKR"
+        },
+        "shipping": {
+          "type": "number",
+          "description": "Shipping fee in LKR"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total order amount in LKR"
+        },
+        "status": {
+          "type": "string",
+          "description": "Order fulfillment and payment status",
+          "enum": ["pending_whatsapp", "pending_receipt", "slip_uploaded", "paid", "sent", "completed", "cancelled"]
+        },
+        "bankReference": {
+          "type": "string",
+          "description": "Customer bank transfer transaction reference or FriMi ID"
+        },
+        "adminNotes": {
+          "type": "string",
+          "description": "Internal admin order processing and verification notes"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["customer", "items", "total", "status"]
+    },
+    "Video": {
+      "title": "Video",
+      "description": "TikTok and Facebook sewing tips and tutorial videos for the social showcase reel.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Video caption or sewing tutorial title"
+        },
+        "platform": {
+          "type": "string",
+          "description": "Platform source",
+          "enum": ["tiktok", "facebook"]
+        },
+        "url": {
+          "type": "string",
+          "description": "Direct URL to TikTok or Facebook video"
+        },
+        "thumbnail": {
+          "type": "string",
+          "description": "Poster image URL for video card"
+        },
+        "views": {
+          "type": "string",
+          "description": "View count display string e.g. 150K"
+        },
+        "duration": {
+          "type": "string",
+          "description": "Duration display e.g. 0:45"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["title", "platform", "url", "thumbnail"]
+    },
+    "Course": {
+      "title": "Course",
+      "description": "Sewing classes, mentorship programs, and workshops.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "level": { "type": "string" },
+        "duration": { "type": "string" },
+        "price": { "type": "string" },
+        "image": { "type": "string" }
+      },
+      "required": ["title", "description", "price"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Physical tools, e-books, and digital cutting guides.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "image": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["name", "price"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Custom tailoring consultation requests.",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["fullName", "phone"]
+    },
+    "Content": {
+      "title": "Content",
+      "description": "Website customizable content and bank details.",
+      "type": "object",
+      "properties": {
+        "app": { "type": "object" },
+        "home": { "type": "object" },
+        "learn": { "type": "object" },
+        "sewAndSu": { "type": "object" },
+        "shop": { "type": "object" },
+        "about": { "type": "object" },
+        "contact": { "type": "object" }
+      }
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Customer purchase requests and WhatsApp orders"
+    },
+    "/videos/{videoId}": {
+      "schema": { "$ref": "#/entities/Video" },
+      "description": "TikTok and Facebook social video showcase reel"
+    },
+    "/courses/{courseId}": {
+      "schema": { "$ref": "#/entities/Course" },
+      "description": "Sewing classes and mentorship offers"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Shop inventory items and digital guides"
+    },
+    "/bookings/{bookingId}": {
+      "schema": { "$ref": "#/entities/Booking" },
+      "description": "Consultation and tailoring inquiries"
+    },
+    "/content/{docId}": {
+      "schema": { "$ref": "#/entities/Content" },
+      "description": "Website copy and configurations"
+    }
+  }
+}

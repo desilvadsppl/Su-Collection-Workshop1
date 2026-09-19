@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=block');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, "Noto Sans Sinhala", sans-serif;
+  --font-serif: Lora, "Noto Sans Sinhala", serif;
+  
+  --color-brand-50: #FFF5F7;
+  --color-brand-100: #FFE4E8;
+  --color-brand-200: #FEC8D3;
+  --color-brand-300: #FE9EAF;
+  --color-brand-400: #FD6B88;
+  --color-brand-500: #F83A64;
+  --color-brand-600: #E31B4B;
+  --color-brand-700: #BF1039;
+  --color-brand-800: #A01235;
+  --color-brand-900: #881331;
+}
+
+html {
+  scroll-padding-top: 140px;
+  scroll-behavior: smooth;
+}
+
+mat-icon {
+  overflow: visible !important;
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply bg-brand-50 text-brand-900 antialiased font-light;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-serif);
+}
+
+strong, b {
+  font-weight: 700 !important;
+}
+
+.label-md {
+  @apply font-sans text-[12px] font-medium leading-[16px] tracking-[1.8px] uppercase;
+}
+
+.body-md {
+  @apply font-sans text-[14px] font-light leading-[20px];
+}
+
+.display-lg {
+  @apply font-serif text-[64px] lg:text-[112px] font-normal leading-[1.1] lg:leading-[112px] tracking-[-0.025em];
+}
+
+.glass-panel {
+  @apply bg-white/60 backdrop-blur-[64px] shadow-[0_25px_50px_-12px_rgba(248,58,100,0.1)];
+}
+
+.gradient-shell {
+  background: linear-gradient(to right top, rgba(248, 58, 100, 0.3), rgba(255, 255, 255, 0), rgba(255, 228, 232, 0.9));
+  @apply p-[1px] rounded-[40px];
+}
+
+.gradient-shell-inner {
+  @apply bg-white/60 backdrop-blur-[24px] rounded-[39px] h-full w-full;
+}
+
+.btn-primary {
+  @apply bg-brand-900 text-white rounded-full px-6 py-3 font-sans text-[12px] font-medium leading-[16px] tracking-[1.8px] uppercase hover:bg-brand-800 transition-colors shadow-[0_10px_20px_-10px_rgba(136,19,49,0.5)];
+}
+
+.btn-secondary {
+  @apply bg-white text-brand-900 rounded-full px-6 py-3 font-sans text-[12px] font-medium leading-[16px] tracking-[1.8px] uppercase border border-white/60 hover:bg-brand-50 transition-colors shadow-sm;
+}
+
+/* Touch Slider & Hidden Scrollbar */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .printable-receipt, .printable-receipt * {
+    visibility: visible;
+  }
+  
+  .printable-receipt {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+.noto-sinhala-page, .noto-sinhala-page *:not(mat-icon) {
+  font-family: 'Noto Sans Sinhala', sans-serif !important;
+}
